@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;  
+}   
+
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:60px;
+   width:100%;
+   background:#999;
+}
+
+#search-weather:hover {
+    opacity: 0.7;
+}
+
+#location {
+    color: #424242;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+::-webkit-input-placeholder {
+   color: #e57373;;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #e57373;;  
+}
+
+#weatherCard {
+    box-shadow: 0 4px 8px 0;
+}

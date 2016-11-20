@@ -1,0 +1,10 @@
+{
+  "name": "Weather_App",
+  "version": "0.1.0",
+  "author": "Donte McDaniel <donte.mcdaniel@hotmail.com>",
+  "dependencies": {
+    "ember": "^1.0.0-pre.2",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1"
+  }
+}
