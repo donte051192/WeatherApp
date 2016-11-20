@@ -1,5 +1,13 @@
 'use strict';
 
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var $ = require('cheerio'); //JQuery that can be used on the server side
+
+module.exports = {
+    getWeatherData,
+    showWeather
+}
+
 function getWeatherData(zipcode) {
     
     var openWeatherRequest = new XMLHttpRequest();
@@ -20,7 +28,6 @@ function getWeatherData(zipcode) {
 
         if (openWeatherRequest.status == 200) {
             openWeatherResponse = JSON.parse(openWeatherRequest.responseText);
-            console.log(openWeatherResponse);
         }
         
         // Sending Web Request to Accuweather
@@ -29,31 +36,30 @@ function getWeatherData(zipcode) {
 
         if (zipCodeRequest.status == 200) {
             zipCodeResponse = JSON.parse(zipCodeRequest.responseText);
-            console.log(zipCodeResponse);
         }
     }
 
-    showWeather(openWeatherResponse, zipCodeResponse);
+    this.showWeather(openWeatherResponse, zipCodeResponse);
 }
 
 function showWeather(openWeatherResponse, zipCodeResponse) {
-    var locationId = document.getElementById('location');
-    var temperatureId = document.getElementById('temperature');
-    var conditionId = document.getElementById('condition');
-    var humidityId = document.getElementById('humidity');
-    var windId = document.getElementById('wind');
-    var weatherCard = document.getElementById('weatherCard');
+    var locationId = $('#location');
+    var temperatureId = $('#temperature');
+    var conditionId = $('#condition');
+    var humidityId = $('#humidity');
+    var windId = $('#wind');
+    var weatherCard = $('#weatherCard');
 
-    weatherCard.style.display = "block";
+    weatherCard.css("display", "block");
 
     //Converting temperature [Kelvin > Farenheit]
     var tempF = parseInt(1.8 * (openWeatherResponse.main.temp - 273) + 32);
 
     //Rendering neccessary data
-    locationId.innerHTML = zipCodeResponse.places["0"]["place name"] + ", " + zipCodeResponse.places["0"]["state abbreviation"];
-    temperatureId.innerHTML = tempF + " F";
-    conditionId.innerHTML = "Condition: " + openWeatherResponse.weather["0"].main;
-    humidityId.innerHTML = "Humidity: " + openWeatherResponse.main.humidity + "%";
-    windId.innerHTML = "Wind: " + openWeatherResponse.wind.speed + "mph";
+    locationId.html(zipCodeResponse.places["0"]["place name"] + ", " + zipCodeResponse.places["0"]["state abbreviation"]);
+    temperatureId.html(tempF + " F");
+    conditionId.html("Condition: " + openWeatherResponse.weather["0"].main);
+    humidityId.html("Humidity: " + openWeatherResponse.main.humidity + "%");
+    windId.html("Wind: " + openWeatherResponse.wind.speed + "mph");
 
 }

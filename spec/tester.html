@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <title>Donte's Weather App</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+        <link rel="stylesheet" href="css/index.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <script src="js/index.js"></script>
+    </head>
+    <body class="yellow lighten-5">
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <br><br>
+                <h1 class="header center" style="color: #e57373;">Weather App</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">A simple and easy way to show the forecast in your area</h5>
+                </div>
+                <div>
+                    <div class="input-field col s12" style="width: 15%; margin: 0 auto;">
+                        <input id="zipcode" type="text" placeholder="Zip Code" style="text-align: center;">
+                    </div>
+                    <div style="margin: 0 auto; width: 10%;">
+                        <button id="search-weather" onclick="getWeatherData(zipcode.value)" class="btn-large waves-effect waves-red grey darken-3">Search</button>
+                    </div>
+                </div>
+                <br><br>
+
+                <div id="weatherCard" class="col s12" style="width: 50%; margin: 0 auto; display: none;">
+                    <!-- Basic Card -->
+                    <div class="card cyan lighten-4">
+                    <div class="card-content white-text" style="text-align: center;">
+                        <span class="card-title" id="location"></span>
+                        <h1 id="temperature" style="color: #e57373;"></h1>
+                        <h5 id="dayTime" style="color: #424242;"></h5>
+                        <p id="condition" style="color: #424242;"></p>
+                        <p id="humidity" style="color: #424242;"></p>
+                        <p id="wind" style="color: #424242;"></p>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer class="grey darken-3">
+            <p style="text-align: center; color: white;">Designed By: Donte McDaniel</p>
+        </footer>
+    </body>
+</html>
